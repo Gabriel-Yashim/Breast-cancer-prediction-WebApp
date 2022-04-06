@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style1.css"> -->
     <title>Breast Cancer Prediction webapp</title>
     <link rel="icon" type="image/png" href="../static/images/favicon.png">
     <style>
@@ -30,18 +30,13 @@
 
         .head {
             background-image: url('../static/images/img11.jpg');
-            background-attachment: fixed;
+            background-attachment: scroll;
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
             height: 500px;
             border-radius: 10px;
 
-        }
-
-        .row>div {
-            display: inline-block;
-            margin: 0px 30px;
         }
 
         #name {
@@ -51,7 +46,7 @@
             font-family: 'Courier New', Courier, monospace;
         }
 
-        .h1 {
+        #h {
             font-size: 50px !important;
             color: white !important;
             font-family: Arial, Helvetica, sans-serif;
@@ -102,27 +97,9 @@
             font-size: 20px;
         }
 
-        #col_1 {
-            /* width: 400px;
-            height: 400px; */
-            padding: 0 0 0 20px;
-            /* background-color: blueviolet; */
-        }
-
-        #col_2 {
-            /* margin: -416px 0 0 450px; */
-            /* height: 400px;
-            width: 400px; */
-            padding: 0 0px 0 20px;
-            /* background-color: aqua; */
-        }
-
-        #col_3 {
-            /* margin: -416px 0 0 900px; */
-            /* height: 400px;
-            width: 400px; */
-            padding: 0 0 0 20px;
-            /* background-color: blue; */
+        .frm>div {
+            display: inline-block;
+            padding: 0px 40px;
         }
 
         #base {
@@ -149,11 +126,11 @@
         }
 
         #pred {
-            /* background-color: rgb(19, 14, 4); */
+            background-color: rgba(19, 14, 4, 0.596);
             font-family: 'Courier New', Courier, monospace;
             /* border-radius: 20px; */
-            /* margin: 0 0 0px 400px; */
-            /* display: inline; */
+            margin: 0 0 0px 30px;
+            display: inline-block;
         }
 
         #note {
@@ -164,19 +141,18 @@
         #result {
             color: rgb(40, 212, 40);
             font-size: 25px;
+            /* background-color: aliceblue; */
+        }
+
+        footer>div {
+            display: inline-block;
+            margin: 0px 50px;
         }
 
         #f-head {
             color: white;
-            font-size: 150%;
-            padding: 10px 0px 0px 10px;
+            font-size: 20px;
             font-family: monospace;
-        }
-
-        #f-head:hover {
-            letter-spacing: 2px;
-            font-style: oblique;
-            text-decoration: underline;
         }
 
         footer {
@@ -184,7 +160,7 @@
             background-color: rgba(7, 7, 14, 0.705);
             /* height: 400px; */
             background-attachment: scroll;
-            position: relative;
+            /* position: relative; */
             border-radius: 5px;
         }
 
@@ -198,7 +174,7 @@
 
         a:hover {
             letter-spacing: 3px;
-            color: rgba(92, 74, 248, 0.815);
+            color: rgba(245, 248, 74, 0.397);
             text-decoration: underline !important;
         }
 
@@ -214,21 +190,23 @@
         }
 
 
-        .foot .foot1 {
+        .foot {
             background-image: url('../static/images/img5.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             border-radius: 5px;
-            /* height: auto; */
+            height: auto;
         }
     </style>
 </head>
 
 <body>
-    <section class="head">
-        <div class="tag">
-            <h1 class="h1">Breast Cancer Prediction <br> System</h1>
-            <p id="name">By <br> Gabriel Yashim</p>
+    <section>
+        <div class="head">
+            <div class="tag">
+                <h1 id="h">Breast Cancer Prediction <br> System</h1>
+                <p id="name">By <br> Gabriel Yashim</p>
+            </div>
         </div>
     </section>
     <hr>
@@ -248,186 +226,175 @@
             </p>
 
         </div>
-
-        <div class="ftco-section params">
-            <div class="container">
-                <form action="{{url_for('predict')}}" method="post">
-                    <div class="row">
-                        <div class="col-md mb-4">
-                            <p>
-                                <input type="number" step="any" placeholder="TEXTURE MEAN" required="required"
-                                    name="te_me">
-                            </p>
+        <div class="params">
+            <form action="{{url_for('predict')}}" method="post">
+                <div class="frm">
+                    <div>
+                        <p>
+                            <input type="number" step="any" placeholder="TEXTURE MEAN" required="required" name="te_me">
+                        </p>
 
 
-                            <p>
-                                <input type="number" step="any" placeholder="AREA MEAN" required="required"
-                                    name="ar_me">
-                            </p>
+                        <p>
+                            <input type="number" step="any" placeholder="AREA MEAN" required="required" name="ar_me">
+                        </p>
 
 
-                            <p>
-                                <input type="number" step="any" placeholder="SMOOTHNESS MEAN" required="required"
-                                    name="sm_me">
-                            </p>
+                        <p>
+                            <input type="number" step="any" placeholder="SMOOTHNESS MEAN" required="required"
+                                name="sm_me">
+                        </p>
 
-                            <p>
-                                <input type="number" step="any" placeholder="COMPACTNESS MEAN" required="required"
-                                    name="co_me">
-                            </p>
+                        <p>
+                            <input type="number" step="any" placeholder="COMPACTNESS MEAN" required="required"
+                                name="co_me">
+                        </p>
 
-                            <p>
-                                <input type="number" step="any" placeholder="CONCAVITY_MEAN" required="required"
-                                    name="con_me">
-                            </p>
+                        <p>
+                            <input type="number" step="any" placeholder="CONCAVITY_MEAN" required="required"
+                                name="con_me">
+                        </p>
 
-                            <p>
-                                <input type="number" step="any" placeholder="SYMMETRY MEAN" required="required"
-                                    name="sy_me">
-                            </p>
+                        <p>
+                            <input type="number" step="any" placeholder="SYMMETRY MEAN" required="required"
+                                name="sy_me">
+                        </p>
 
-                            <p>
-                                <input type="number" step="any" placeholder="FRACTAL DIMENSION MEAN" required="required"
-                                    name="fdm">
-                            </p>
+                        <p>
+                            <input type="number" step="any" placeholder="FRACTAL DIMENSION MEAN" required="required"
+                                name="fdm">
+                        </p>
 
-                        </div>
-                        <div class="col-md mb-4">
-                            <p>
-                                <input type="number" step="any" placeholder="RADIUS SE" required="required"
-                                    name="ra_se">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="TEXTURE SE" required="required"
-                                    name="te_se">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="AREA SE" required="required" name="ar_se">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="SMOOTHNESS SE" required="required"
-                                    name="sm_se">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="COMPACTNESS SE" required="required"
-                                    name="co_se">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="CONCAVITY SE" required="required"
-                                    name="con_se">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="CONCAVE POINTS SE" required="required"
-                                    name="cps">
-                            </p>
-                        </div>
-                        <div class="col-md mb-4">
-                            <p>
-                                <input type="number" step="any" placeholder="SYMMETRY SE" required="required"
-                                    name="sy_se">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="FRACTAL DIMENSION SE" required="required"
-                                    name="fds">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="SMOOTHNESS WORST" required="required"
-                                    name="sm_wo">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="COMPACTNESS WORST" required="required"
-                                    name="co_wo">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="CONCAVITY WORST" required="required"
-                                    name="con_wo">
-                            </p>
-
-                            <p>
-                                <input type="number" step="any" placeholder="SYMMETRY WORST" required="required"
-                                    name="sy_wo">
-
-                            <p>
-                                <input type="number" step="any" placeholder="FRACTAL DIMENSION WORST"
-                                    required="required" name="fdw">
-                            </p>
-                        </div>
-                        <div id="base">
-                            <button type="submit" class="btn">Predict</button>
-
-                        </div>
                     </div>
-                </form>
-                <br>
-                <br>
+                    <div>
+                        <p>
+                            <input type="number" step="any" placeholder="RADIUS SE" required="required" name="ra_se">
+                        </p>
 
-                <p id="pred">
-                    Benign = B | Malignant = M <br> <br>
-                    <b id="result">Prediction = {{ prediction_text }}</b>
-                </p>
+                        <p>
+                            <input type="number" step="any" placeholder="TEXTURE SE" required="required" name="te_se">
+                        </p>
 
+                        <p>
+                            <input type="number" step="any" placeholder="AREA SE" required="required" name="ar_se">
+                        </p>
 
-                <br>
-                <br>
+                        <p>
+                            <input type="number" step="any" placeholder="SMOOTHNESS SE" required="required"
+                                name="sm_se">
+                        </p>
 
-            </div>
+                        <p>
+                            <input type="number" step="any" placeholder="COMPACTNESS SE" required="required"
+                                name="co_se">
+                        </p>
+
+                        <p>
+                            <input type="number" step="any" placeholder="CONCAVITY SE" required="required"
+                                name="con_se">
+                        </p>
+
+                        <p>
+                            <input type="number" step="any" placeholder="CONCAVE POINTS SE" required="required"
+                                name="cps">
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <input type="number" step="any" placeholder="SYMMETRY SE" required="required" name="sy_se">
+                        </p>
+
+                        <p>
+                            <input type="number" step="any" placeholder="FRACTAL DIMENSION SE" required="required"
+                                name="fds">
+                        </p>
+
+                        <p>
+                            <input type="number" step="any" placeholder="SMOOTHNESS WORST" required="required"
+                                name="sm_wo">
+                        </p>
+
+                        <p>
+                            <input type="number" step="any" placeholder="COMPACTNESS WORST" required="required"
+                                name="co_wo">
+                        </p>
+
+                        <p>
+                            <input type="number" step="any" placeholder="CONCAVITY WORST" required="required"
+                                name="con_wo">
+                        </p>
+
+                        <p>
+                            <input type="number" step="any" placeholder="SYMMETRY WORST" required="required"
+                                name="sy_wo">
+
+                        <p>
+                            <input type="number" step="any" placeholder="FRACTAL DIMENSION WORST" required="required"
+                                name="fdw">
+                        </p>
+                    </div><br>
+                    <div id="base">
+                        <button type="submit" class="btn">Predict</button>
+
+                    </div>
+
+                </div>
+            </form>
+            <br>
+
+            <p id="pred">
+                Benign = B | Malignant = M <br> <br>
+                <b id="result">Prediction = {{ prediction_text }}</b>
+            </p>
+            <br>
+            <br>
+        </div>
         </div>
     </section>
     <hr>
     <section class="foot">
-        <div class="foot1">
-            <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md mb-4">
-                            <p id="f-head">
-                                Let's Keep In Touch!
-                            </p>
-                            <ul id="l-social">
-                                <li id="social"><a href="https://www.facebook.com/gebrile.yashim"
-                                        class="social">Facebook</a>
-                                </li>
-                                <br>
-                                <li id="social"><a href="https://wa.me/2349094078627" class="social">Whatsapp</a></li>
-                                <br>
-                                <li id="social"><a href="https://twitter.com/YashimGabriel" class="social">Twitter</a>
-                                </li>
-                                <br>
-                                <li id="social"><a href="https://www.instagram.com/gabriel_yashim/"
-                                        class="social">Instagram</a>
-                                </li> <br>
-                                <li id="social"><a href="https://www.linkedin.com/in/gabriel-yashim-726bb1218/"
-                                        class="social">LinkedIn</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md mb-4">
-                            <div class="overlay"></div>
-                            <img src="../static/images/about-1.jpg" alt="Gabriel-Yashim" srcset="" width="250px"
-                                height="350px">
-                            <button><a href="https://Gabriel-Yashim.github.io">Gabriel-Yashim</a></button>
-                        </div>
-                        <div class="col-md mb-4">
-                            <p id="note">Hope the System was helpful?</p>
-                            <p>This is a Demo system that can perdict breast cancer <br> when provided the necessary
-                                input
-                                variables.</p>
-                        </div>
-                        <marquee behavior="" direction="">Gabriel_Yashim_-_&copy;2022....Thank You.</marquee>
-                    </div>
-                </div>
-            </footer>
-        </div>
+
+        <footer>
+            <div style="float: left;">
+                <p id="f-head">
+                    Let's Keep In Touch!
+                </p>
+                <ul id="l-social">
+                    <li id="social"><a href="https://www.facebook.com/gebrile.yashim" class="social">Facebook</a>
+                    </li>
+                    <br>
+                    <li id="social"><a href="https://wa.me/2349094078627" class="social">Whatsapp</a></li>
+                    <br>
+                    <li id="social"><a href="https://twitter.com/YashimGabriel" class="social">Twitter</a>
+                    </li>
+                    <br>
+                    <li id="social"><a href="https://www.instagram.com/gabriel_yashim/" class="social">Instagram</a>
+                    </li> <br>
+                    <li id="social"><a href="https://www.linkedin.com/in/gabriel-yashim-726bb1218/"
+                            class="social">LinkedIn</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <img src="../static/images/about-1.jpg" alt="Gabriel-Yashim" srcset="" width="250px" height="350px"
+                    style="margin: 20px 0px 0px 80px;">
+                <p style="margin: 0px 0px 0px 80px;">
+                    <button><a href="https://Gabriel-Yashim.github.io">Gabriel-Yashim</a></button>
+                </p>
+            </div>
+            <div style="float: right;">
+                <p id="note">Hope the System was helpful?</p>
+                <p>This is a Demo system that can perdict breast cancer <br> when provided the necessary
+                    input
+                    variables.</p>
+            </div>
+            <marquee behavior="" direction="">Gabriel_Yashim_-_&copy;
+                <script>document.write(new Date().getFullYear());</script>....Thank You.
+
+            </marquee>
+
+        </footer>
+
     </section>
 
 </body>
