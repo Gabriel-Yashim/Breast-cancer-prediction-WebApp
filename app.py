@@ -5,18 +5,20 @@ Created on Sun Jan 23 15:24:33 2022
 @author: YASHIM GABRIEL
 """
 
-import numpy as np 
+import numpy as np
 from flask import Flask, request, render_template
 import pickle
 
 app = Flask(__name__)
 model = pickle.load(open('GradientBoost1.pkl', 'rb'))
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
+
+@app.route('/predict', methods=['POST'])
 def predict():
     te_me = float(request.form['te_me'])
     ar_me = float(request.form['ar_me'])
@@ -40,13 +42,14 @@ def predict():
     sy_wo = float(request.form['sy_wo'])
     fdw = float(request.form['fdw'])
 
-    final_features = np.array([[te_me,ar_me,sm_me,co_me,con_me,sy_me,fdm,ra_se,te_se,ar_se,sm_se,
-                                co_se,con_se,cps,sy_se,fds,sm_wo,co_wo,con_wo,sy_wo,fdw]])
+    final_features = np.array([[te_me, ar_me, sm_me, co_me, con_me, sy_me, fdm, ra_se, te_se, ar_se, sm_se,
+                                co_se, con_se, cps, sy_se, fds, sm_wo, co_wo, con_wo, sy_wo, fdw]])
     prediction = model.predict(final_features)
-    
+
     output = prediction[0]
-    
+
     return render_template('index.html', prediction_text=output)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
