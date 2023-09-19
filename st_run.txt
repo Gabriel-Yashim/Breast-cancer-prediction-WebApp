@@ -1,0 +1,1 @@
+streamlit run "C:\Users\SHOPINVERSE\Documents\practicing_neural-network\practicing_neural-network\MSc breast cancer prediction\Deployment\streamlit.py"
